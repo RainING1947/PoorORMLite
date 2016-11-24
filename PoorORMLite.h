@@ -96,6 +96,16 @@ namespace Poor_ORM_Impl
 		return inputStr;
 	}
 
+	std::string getPrime(std::string inputStr)
+	{
+		size_t pos = 0;
+		if ((pos = inputStr.find(',', 0)) != std::string::npos)
+		{
+			auto ret = inputStr.substr(0, pos);
+			return std::move(ret);
+		}
+	}
+
 	//Visitor Creating Table
 	class CreateVisitor
 	{
@@ -372,10 +382,12 @@ namespace Poor_ORM
 			std::string strValue = std::move(visitor.serializedValues);
 			visitor.serializedValues = "";
 			strValue.pop_back();
+
 			sqlCmd = "insert into " + _tblName + " (" +
 				strTypes + ") select " + strValue +
-				"where not exists ( select * from " + _tblName + " where " + Poor_ORM_Impl::SplitStr(strTypes) +"=" 
-				+ Poor_ORM_Impl::SplitStr(strValue) +");";
+				" where not exists ( select * from " + _tblName + " where " + Poor_ORM_Impl::getPrime(strTypes) +"=" 
+				+ Poor_ORM_Impl::getPrime(strValue) +");";
+			std::cout << sqlCmd << std::endl;
 			return connector.Execute(sqlCmd);
 		}
 		bool Update(const C &value)

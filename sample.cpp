@@ -10,6 +10,20 @@ struct MyClass
 	ORMAP(MyClass, id, score, name)
 };
 
+struct PlayerInfo
+{
+	std::string name;
+	std::string password;
+	int pokemonNumber;
+	int rank;
+	std::string beginDateTime; //201611171230 2016-11-17 12:30
+	std::string gameTime; //12003 120hours 3minutes
+	ORMAP(PlayerInfo, name, password,
+		pokemonNumber, rank, beginDateTime,
+		gameTime)
+};
+
+
 using namespace Poor_ORM;
 
 int main()
@@ -54,6 +68,24 @@ int main()
 	{
 		std::cout << c.id << " " << c.score << " " << c.name << std::endl;
 	}
+
+	PlayerInfo playerInfo = {
+		"Lee",
+		"2014232",
+		0,
+		9999,
+		"201611171230", //201611171230 2016-11-17 12:30
+		"122300" //1223hours 00minutes
+	};
+
+	Poor_ORM::ORMapper<PlayerInfo> mapper1("playerinfo.db");
+	mapper1.CreateTable();
+	mapper1.Insert(playerInfo);
+	PlayerInfo qHelper1;
+	auto query1 = mapper1.Query(qHelper1)
+		.ToVector();
+	for (auto c : query1)
+		std::cout << c.name << " " << c.password << std::endl;
 
 	std::cin.get();
 	return 0;

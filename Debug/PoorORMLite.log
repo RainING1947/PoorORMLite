@@ -1,7 +1,3 @@
 ﻿  sample.cpp
-c:\users\wxiaoyu\desktop\poorormlite\poorormlite\poorormlite.h(159): error C2065: “string”: 未声明的标识符
-  c:\users\wxiaoyu\desktop\poorormlite\poorormlite\poorormlite.h(182): note: 参见对正在编译的类 模板 实例化“Poor_ORM::ORMapper<C>”的引用
-c:\users\wxiaoyu\desktop\poorormlite\poorormlite\poorormlite.h(159): error C2923: “std::vector”: 对于参数“_Ty”，“string”不是有效的 模板 类型变量
-c:\users\wxiaoyu\desktop\poorormlite\poorormlite\poorormlite.h(159): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
-c:\users\wxiaoyu\desktop\poorormlite\poorormlite\sample.cpp(10): error C2059: 语法错误:“'template<'”
-c:\users\wxiaoyu\desktop\poorormlite\poorormlite\sample.cpp(10): error C2334: “{”的前面有意外标记；跳过明显的函数体
+c:\users\wxiaoyu\desktop\poorormlite\poorormlite.h(107): warning C4715: “Poor_ORM_Impl::getPrime”: 不是所有的控件路径都返回值
+LINK : fatal error LNK1104: 无法打开文件“C:\Users\wxiaoyu\Desktop\PoorORMLite\Debug\PoorORMLite.exe”
